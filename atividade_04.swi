@@ -1,0 +1,27 @@
+% Funções Gerais:
+
+% Q - 01: Regra para verificar a frequência de um elemento na lista.
+
+% Q - 02: Regra para concatenar duas listas.
+
+% Q - 03: Regra para concatenar duas listas dois a dois.
+
+% Q - 04: Regra para somar as listas que estão dentro de uma lista. Exemplo: [[1,2,3], [1,1,1]], gera a saída [6, 3].
+
+% Q - 05: Regra para encontrar o último elemento na lista.
+
+% Q - 06: Regra para contar elementos contíguos 2 a 2 em uma lista.
+
+% Q - 07: Regra para construir a lista reversa.
+
+% Q - 08: Regra para informar se o elemento está na lista.
+
+% Q - 09: Regra para informar os elementos duplicados, considerando a ordem em que eles aparecem na lista.
+
+% Q - 10: Regra para eliminar os elementos duplicados.
+
+/*
+    Buscas:
+    [Head | Tail] = [mia, vicent, yolanda, bob] -> Head = mia, Tail = [vicent, yolanda, bob]
+    [Head1, Head2 | Tail] = [mia, vicent, yolanda, bob] -> Head1 = mia, Head2 = vicent, Tail = [yolanda, bob]
+*/
