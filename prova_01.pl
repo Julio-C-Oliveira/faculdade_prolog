@@ -42,3 +42,14 @@ putMinAtFirst([], []).
 putMinAtFirst([Head|Tail], [Min|Rest]) :-
     minElement([Head|Tail], Min), 
     deleteFirstElementOccurrence(Min, [Head|Tail], Rest). 
+
+tail([_|Tail], Tail). % Função para pegar todos os elementos exceto o primeiro.
+head([Head|_], Head). % Função pra pegar o primeiro elemento.
+
+crescentSort([], []).
+crescentSort([Head|Tail], OrderedList) :-
+    putMinAtFirst([Head|Tail], MinAtFirstOrderedList), % Ordena o primeiro.
+    tail(MinAtFirstOrderedList, TailMinAtFirstOrderedList), % Pega a cauda que ainda está desordenada.
+    crescentSort(TailMinAtFirstOrderedList, PartialOrderedList), % Organiza a cauda.
+    head(MinAtFirstOrderedList, Min), % Pega a cabeça que já está ordenada.
+    OrderedList = [Min|PartialOrderedList]. % Junta a cabeça ordenada com a cauda ordenada.
