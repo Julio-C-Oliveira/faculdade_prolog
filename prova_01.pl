@@ -53,3 +53,22 @@ crescentSort([Head|Tail], OrderedList) :-
     crescentSort(TailMinAtFirstOrderedList, PartialOrderedList), % Organiza a cauda.
     head(MinAtFirstOrderedList, Min), % Pega a cabeça que já está ordenada.
     OrderedList = [Min|PartialOrderedList]. % Junta a cabeça ordenada com a cauda ordenada.
+
+
+
+% Q 03: Receba uma lista de inteiros e informe a quantidade de números primos adjacents entre si. 
+hasDivisor(Number, K) :-
+    K*K =< Number, % Se o número for menor ele possui divisor porque eu só preciso testar os valores até a raiz do valor.
+    ( 
+    	Number mod K =:= 0; % Se o resto com k for 0 tem divisor.
+    	K2 is K + 2, % Mais dois que é pra verificar somente os números impares, os pares já foram descartados.
+        hasDivisor(Number, K2)
+    ).
+
+isPrime(2) :- !. % Único número primo par.
+isPrime(3) :- !. % Vou usar como base então tenho que retirar do caso.
+isPrime(Number) :-
+    Number > 1, % Tem que ser maior que 1.
+    Number mod 2 =\= 0, % Se o resto for 0, é par e não é 2, ou seja tem divisor.
+    \+ hasDivisor(Number, 3). % Verifica se existe algum divisor impar a partir do 3.
+
