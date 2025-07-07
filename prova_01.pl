@@ -103,3 +103,12 @@ isPrime(Number) :-
     Number mod 2 =\= 0, % Se o resto for 0, é par e não é 2, ou seja tem divisor.
     \+ hasDivisor(Number, 3). % Verifica se existe algum divisor impar a partir do 3.
 
+searchPrimeNumbers(0, []) :- !.
+searchPrimeNumbers(Number, ListOfPrimes) :-
+    TemporaryNumber is Number - 1,
+    searchPrimeNumbers(TemporaryNumber, TailListOfPrimes),
+    (
+        isPrime(Number) ->
+            ListOfPrimes = [Number|TailListOfPrimes];
+            ListOfPrimes = TailListOfPrimes
+    ).
