@@ -56,7 +56,38 @@ crescentSort([Head|Tail], OrderedList) :-
 
 
 
-% Q 03: Receba uma lista de inteiros e informe a quantidade de números primos adjacents entre si. 
+% Q 03: Receba uma lista de inteiros e informe a quantidade de números primos entre si adjacents entre si. 
+% Números primos entre si são aqueles que possuem apenas 1 como máximo divisor comum.
+/*
+O que tenho que fazer?
+- Calcular o MDC entre dois números.
+- Pegar os dois primeiros números da lista.
+- Verifico se esses números são primos entre si:
+    - Caso sejam: Contabilizo.
+    - Caso não sejam: Chamo a função novamente para a cauda.
+*/
+
+mdc(FirstNumber, SecondNumber, MDC) :-
+    Rest is FirstNumber mod SecondNumber,
+    (
+    Rest =:= 0 -> 
+        MDC = SecondNumber;
+        mdc(SecondNumber, Rest, MDC)
+    ).
+
+primesToEachOther([_], 0) :- !.
+primesToEachOther([Head1, Head2|Tail], NumberOfPrimesEachOthers) :-
+    primesToEachOther([Head2|Tail], NumberOfPrimesEachOthersOnTail),
+    mdc(Head1, Head2, MDC),
+    (
+        MDC =:= 1 ->
+            NumberOfPrimesEachOthers is NumberOfPrimesEachOthersOnTail + 1;
+            NumberOfPrimesEachOthers = NumberOfPrimesEachOthersOnTail
+    ).
+
+
+
+% Q 04: Função que receba um número X e retorne uma lista com os números primos incluindo ele, caso seja.
 hasDivisor(Number, K) :-
     K*K =< Number, % Se o número for menor ele possui divisor porque eu só preciso testar os valores até a raiz do valor.
     ( 
