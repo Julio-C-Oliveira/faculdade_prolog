@@ -7,6 +7,7 @@
     - ; esse ponto e virgula representa o senão.
     - , essa virgula representa o and.
     - :- significa é verdadeiro se, serve para definir clausulas.
+    - Prolog retorna verdadeiro sempre que uma clausula se encaixa em uma busca, se nenhum for verdadeira retorna falso.
 */
 
 head([Head|_], Head). % Função pra pegar o primeiro elemento.
